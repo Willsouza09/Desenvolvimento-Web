@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/04/2019 21:52:52 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="model.Category" optimistic-lock="version" schema="public" table="category">
+    <id name="categoryId" type="int">
+      <column name="category_id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="name" type="string">
+      <column length="25" name="name" not-null="true"/>
+    </property>
+    <property name="lastUpdate" type="timestamp">
+      <column length="29" name="last_update" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="filmCategories" table="film_category">
+      <key>
+        <column name="category_id" not-null="true"/>
+      </key>
+      <one-to-many class="model.FilmCategory"/>
+    </set>
+  </class>
+</hibernate-mapping>
