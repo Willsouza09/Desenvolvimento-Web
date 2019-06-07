@@ -9,7 +9,7 @@
     <ui:composition  template="modeloGeral.xhtml">
         <ui:define name="mataData">
             <f:metadata>
-               <f:event listener="#{categoryController.carregarPesquisa()}" type="preRenderView"/>
+                <f:event listener="#{categoryController.carregarPesquisa()}" type="preRenderView"/>
             </f:metadata>
         </ui:define>
         <ui:define name="conteudo">
@@ -20,7 +20,7 @@
                     </f:facet>
                 </p:toolbar>
                 <h:panelGrid columns="4">
-                    
+
                     <p:commandButton value="Novo"  action="categoryCadastro.xhtml?faces-redirect=true"/>
                 </h:panelGrid>
                 <p:dataTable value="#{categoryController.listaCategory}" var="item" >
@@ -51,7 +51,10 @@
                         <p:button value="Editar" outcome="categoryCadastro.xhtml" >
                             <f:param name="codigo" value="#{item.categoryId}"/>
                         </p:button>
-                         <p:button value="Excluir" outcome="categoryCadastro.xhtml" >
+                        <p:button value="Excluir" outcome="categoryCadastro.xhtml" >
+                            <f:param name="codigo" value="#{item.categoryId}"/>
+                        </p:button>
+                        <p:button value="Excluir" outcome="categoryCadastro.xhtml" >
                             <f:param name="codigo" value="#{item.categoryId}"/>
                         </p:button>
                     </p:column>
