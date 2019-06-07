@@ -23,8 +23,7 @@ import javax.inject.Named;
 @Named(value = "categoryController")
 public class CategoryController implements Serializable {
 
-    int startId;
-    int endId;
+
     DataModel categoryName;
     CategoryHelper helper;
     private List<Category> listaCategory;
@@ -92,48 +91,6 @@ public class CategoryController implements Serializable {
 
     void recreateModel() {
         categoryName = null;
-    }
-
-    public boolean isHasNextPage() {
-        if (endId + pageSize <= recordCount) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isHasPreviousPage() {
-        if (startId - pageSize > 0) {
-            return true;
-        }
-        return false;
-    }
-
-    public String next() {
-        startId = endId + 1;
-        endId = endId + pageSize;
-        recreateModel();
-        return "index";
-    }
-
-    public String previous() {
-        startId = startId - pageSize;
-        endId = endId - pageSize;
-        recreateModel();
-        return "index";
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public String prepareView() {
-        current = (Category) getCategoryName().getRowData();
-        return "browse";
-    }
-
-    public String prepareList() {
-        recreateModel();
-        return "index";
     }
 
     public void salvar() {

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition  template="modeloGeral.xhtml">
+        <ui:define name="metaData">
+            <f:metadata >
+                <f:event listener="#{actorController.carregarDados()}" type="preRenderView"/>
+                <f:viewParam name="codigo" value="#{actorController.codigo}"/>
+            </f:metadata>
+        </ui:define>
+        <ui:define name="conteudo">
+            <h:form>
+                <p:toolbar>
+                    <f:facet name="left">
+                        <h:outputText value="Actor"/>
+                    </f:facet>
+                </p:toolbar>
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="Id:"/>
+                    <p:inputText value="#{actorController.actor.actorId}"
+                                 maxlength="20" size="20" readonly="true" />
+
+                    <p:outputLabel value="Nome"/>
+                    <p:inputText  value="#{actorController.actor.firstName}" 
+                                  maxlength="50" size="30"/>
+                    <p:outputLabel value="Sobrenome"/>
+                    <p:inputText  value="#{actorController.actor.lastName}" 
+                                  maxlength="50" size="30"/>
+                    <p:outputLabel value="Data"/>
+                    <p:inputText  value="#{actorController.actor.lastUpdate}" 
+                                  maxlength="50" size="30"/>
+
+                </h:panelGrid>
+
+                <h:panelGrid columns="5">
+                    <p:commandButton value="Novo"/>
+                    <p:commandButton value="Salvar" action="#{actorController.salvar()}" update=":msgGlobal"/>
+                    <p:commandButton value="Editar" action="#{actorController.editar()}" update=":msgGlobal"/>
+                    <p:commandButton value="Excluir" action="#{actorController.excluir()}" update=":msgGlobal"/>
+                    <p:button value="Voltar" outcome="pesquisaActor.xhtml" />
+                </h:panelGrid>
+
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition  template="modeloGeral.xhtml">
+        <ui:define name="mataData">
+            <f:metadata>
+                <f:event listener="#{actorController.carregarPesquisa()}" type="preRenderView"/>
+            </f:metadata>
+        </ui:define>
+        <ui:define name="conteudo">
+            <h:form>
+                <p:toolbar>
+                    <f:facet name="left">
+                        <h:outputText value="Actor"/>
+                    </f:facet>
+                </p:toolbar>
+                <h:panelGrid columns="4">
+                    
+                    <p:commandButton value="Novo"  action="actorCadastro.xhtml?faces-redirect=true"/>
+                </h:panelGrid>
+                <p:dataTable value="#{actorController.listActor}" var="item" >
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="ID"/>
+                        </f:facet>
+                        <h:outputText value="#{item.actorId}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Actor"/>
+                        </f:facet>
+                        <h:outputText value="#{item.firstName}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Actor"/>
+                        </f:facet>
+                        <h:outputText value="#{item.lastName}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ultima Atualização"/>
+                        </f:facet>
+                        <h:outputText value="#{item.lastUpdate}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value=" "/>
+                        </f:facet>
+                        <p:button value="Editar" outcome="actorCadastro.xhtml" >
+                            <f:param name="codigo" value="#{item.actorId}"/>
+                        </p:button>
+                         <p:button value="Excluir" outcome="actorCadastro.xhtml" >
+                             <f:param name="codigo" value="#{item.actorId}"/>
+                        </p:button>
+                    </p:column>
+                </p:dataTable>
+            </h:form>  
+        </ui:define>
+    </ui:composition>
+</html>
