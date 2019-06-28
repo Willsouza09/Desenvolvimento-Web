@@ -16,7 +16,8 @@ import org.hibernate.Session;
  * @author William
  */
 public class ActorHelper {
-        Session session = null;
+
+    Session session = null;
 
     public ActorHelper() {
         //this.session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -37,7 +38,8 @@ public class ActorHelper {
             session.close();
         }
     }
-        public List getActor() {
+
+    public List getActor() {
         openSession();
         List<Actor> actorList = null;
         org.hibernate.Transaction tx = session.beginTransaction();
@@ -54,7 +56,8 @@ public class ActorHelper {
         }
         return actorList;
     }
-        public void salvar(Actor actor) {
+
+    public void salvar(Actor actor) {
 
         openSession();
         org.hibernate.Transaction tx = session.beginTransaction();
@@ -109,22 +112,25 @@ public class ActorHelper {
         }
 
     }
-    
-         public List getActorsByID(int actorId) {
+
+    public Actor getActorByID(int actorId) {
         openSession();
         List<Actor> actorList = null;
         org.hibernate.Transaction tx = session.beginTransaction();
         try {
-            Query q = session.createQuery("from Actor as actor where actor.actorId= " + actorId );
+            Query q = session.createQuery("from Actor as actor where actor.actorId= " + actorId);
             actorList = (List<Actor>) q.list();
         } catch (Exception e) {
             tx.rollback();
             e.printStackTrace();
         } finally {
-             // session.clear();
+            closeSession();
         }
 
-        return actorList;
+        if(actorList == null || actorList.size() == 0)
+            return null;
+        
+        return actorList.get(0);
     }
 
 }

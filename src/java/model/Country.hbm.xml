@@ -3,22 +3,22 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 07/06/2019 21:27:20 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.Language" table="language" schema="public" optimistic-lock="version">
-        <id name="languageId" type="int">
-            <column name="language_id" />
+    <class name="model.Country" table="country" schema="public" optimistic-lock="version">
+        <id name="countryId" type="int">
+            <column name="country_id" />
             <generator class="assigned" />
         </id>
-        <property name="name" type="string">
-            <column name="name" length="20" not-null="true" />
+        <property name="country" type="string">
+            <column name="country" length="50" not-null="true" />
         </property>
         <property name="lastUpdate" type="timestamp">
             <column name="last_update" length="29" not-null="true" />
         </property>
-        <set name="films" table="film" inverse="true" lazy="true" fetch="select">
+        <set name="cities" table="city" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="language_id" not-null="true" />
+                <column name="country_id" not-null="true" />
             </key>
-            <one-to-many class="model.Film" />
+            <one-to-many class="model.City" />
         </set>
     </class>
 </hibernate-mapping>

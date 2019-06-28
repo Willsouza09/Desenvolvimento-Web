@@ -24,12 +24,20 @@ public class FilmHelper {
     Session session = null;
 
     public FilmHelper() {
-        this.session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //this.session = HibernateUtil.getSessionFactory().getCurrentSession();
+        openSession();
     }
     
     private void openSession() {
-        if (!session.isOpen()) {
-            session = HibernateUtil.getSessionFactory().openSession();
+        if (session == null || !session.isOpen()) {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+        }
+    }
+    public void closeSession() {
+
+        if (session.isOpen()) {
+
+            session.close();
         }
     }
 

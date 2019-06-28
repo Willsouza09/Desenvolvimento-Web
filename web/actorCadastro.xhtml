@@ -31,17 +31,15 @@
                     <p:outputLabel value="Sobrenome"/>
                     <p:inputText  value="#{actorController.actor.lastName}" 
                                   maxlength="50" size="30"/>
-                    <p:outputLabel value="Data"/>
-                    <p:inputText  value="#{actorController.actor.lastUpdate}" 
-                                  maxlength="50" size="30"/>
+  
 
                 </h:panelGrid>
 
                 <h:panelGrid columns="5">
                     <p:commandButton value="Novo"/>
-                    <p:commandButton value="Salvar" action="#{actorController.salvar()}" update=":msgGlobal"/>
-                    <p:commandButton value="Editar" action="#{actorController.editar()}" update=":msgGlobal"/>
-                    <p:commandButton value="Excluir" action="#{actorController.excluir()}" update=":msgGlobal"/>
+                    <p:commandButton value="Salvar" actionListener="#{actorController.salvar()}" update=":msgGlobal"/>
+                    <p:commandButton value="Editar" actionListener="#{actorController.editar()}" update=":msgGlobal"/>
+                    <p:commandButton value="Excluir" actionListener="#{actorController.excluir()}" update=":msgGlobal"/>
                     <p:button value="Voltar" outcome="pesquisaActor.xhtml" />
                 </h:panelGrid>
 

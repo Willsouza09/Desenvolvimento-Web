@@ -1,8 +1,7 @@
 package model;
-// Generated 27/04/2019 21:52:51 by Hibernate Tools 4.3.1
+// Generated 07/06/2019 21:27:19 by Hibernate Tools 4.3.1
 
 
-import model.FilmActor;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +15,7 @@ public class Actor  implements java.io.Serializable {
      private int actorId;
      private String firstName;
      private String lastName;
-     private Date lastUpdate;
+     private Date lastUpdate = new Date(System.currentTimeMillis());
      private Set<FilmActor> filmActors = new HashSet<FilmActor>(0);
 
     public Actor() {

@@ -34,6 +34,7 @@ public class CategoryController implements Serializable {
     private int selectedItemIndex;
     private Integer codigo;
    
+    
 
     public Integer getCodigo() {
         return codigo;

@@ -33,13 +33,13 @@
                 <h:form>
                     <p:panelMenu style="width:300px">
                         <p:submenu label="Arquivo">
-                            <p:menuitem value="Principal" action="#{menuView.save}" outcome="principal.xhtml"/>
-                            <p:menuitem value="Sair" action="#{menuView.update}"/>
+                            <p:menuitem value="Principal" outcome="principal.xhtml"/>
+                            <p:menuitem value="Sair"/>
                         </p:submenu>
                         <p:submenu label="Cadastro">
-                            <p:menuitem value="Filme" action="#{menuView.delete}"/>
-                            <p:menuitem value="Categoria" action="#{menuView.save}" outcome="pesquisaCategory.xhtml"/> 
-                            <p:menuitem value="Ator" action="#{menuView.save}" outcome="pesquisaActor.xhtml"/>
+                            <p:menuitem value="Filme"/>
+                            <p:menuitem value="Categoria" outcome="pesquisaCategory.xhtml"/> 
+                            <p:menuitem value="Ator"  outcome="pesquisaActor.xhtml"/>
                         </p:submenu>
                         <p:separator />
                     </p:panelMenu>

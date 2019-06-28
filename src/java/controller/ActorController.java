@@ -41,6 +41,7 @@ public class ActorController implements Serializable {
     public void setListActor(List<Actor> listActor) {
         this.listActor = listActor;
     }
+    
 
     
     public Integer getCodigo() {
@@ -129,10 +130,10 @@ public class ActorController implements Serializable {
         try {
             ActorHelper actorHelper = new ActorHelper();
             actorHelper.excluir(actor);
-            FacesUtil.adicionarMsgInfo("Actor salva com ucesso");
+            FacesUtil.adicionarMsgInfo("Actor excluido com ucesso");
 
         } catch (Exception e) {
-            FacesUtil.adicionarMsgErro("Erro ao cadastrar Actor");
+            FacesUtil.adicionarMsgErro("Erro ao excluir Actor");
         }
 
     }
@@ -141,7 +142,7 @@ public class ActorController implements Serializable {
 
         if (codigo != null) {
             ActorHelper actorHelper = new ActorHelper();
-            actor = (Actor) actorHelper.getActorsByID(codigo);
+            actor = (Actor) actorHelper.getActorByID(codigo);
 
         } else {
             actor = new Actor();
